@@ -33,3 +33,6 @@ spring:
           filters:
             - name: MsGatewayPreFilter
             - name: MsGatewayPostFilter
+logging:
+  level:
+    '[com.nttdata.bootcamp.msgateway]': Info
