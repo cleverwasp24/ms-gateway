@@ -29,7 +29,14 @@ spring:
         - id: ms-credit
           uri: http://localhost:8083/
           predicates:
-            - Path=/bootcamp/creditcard/**,/bootcamp/loan/**,/bootcamp/transaction/**,/bootcamp/loanPayment/**
+            - Path=/bootcamp/loan/**,/bootcamp/loanPayment/**
+          filters:
+            - name: MsGatewayPreFilter
+            - name: MsGatewayPostFilter
+        - id: ms-card
+          uri: http://localhost:8084/
+          predicates:
+            - Path=/bootcamp/card/**,/bootcamp/transaction/**
           filters:
             - name: MsGatewayPreFilter
             - name: MsGatewayPostFilter
