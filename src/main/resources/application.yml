@@ -22,7 +22,7 @@ spring:
         - id: ms-account
           uri: http://localhost:8082/
           predicates:
-            - Path=/bootcamp/account/**,/bootcamp/transaction/**
+            - Path=/bootcamp/account/**,/bootcamp/accountTransaction/**
           filters:
           - name: MsGatewayPreFilter
           - name: MsGatewayPostFilter
@@ -36,7 +36,14 @@ spring:
         - id: ms-card
           uri: http://localhost:8084/
           predicates:
-            - Path=/bootcamp/card/**,/bootcamp/transaction/**
+            - Path=/bootcamp/card/**,/bootcamp/cardTransaction/**
+          filters:
+            - name: MsGatewayPreFilter
+            - name: MsGatewayPostFilter
+        - id: ms-wallet
+          uri: http://localhost:8085/
+          predicates:
+            - Path=/bootcamp/wallet/**,/bootcamp/walletTransaction/**
           filters:
             - name: MsGatewayPreFilter
             - name: MsGatewayPostFilter
