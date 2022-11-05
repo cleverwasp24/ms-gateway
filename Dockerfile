@@ -1,4 +1,3 @@
 FROM openjdk:17-oracle
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} ms-gateway.jar
-ENTRYPOINT ["java","-jar","/ms-gateway.jar"]
+ADD target/ms-gateway-0.0.1-SNAPSHOT.jar ms-gateway.jar
+ENTRYPOINT ["java","-jar","ms-gateway.jar"]
