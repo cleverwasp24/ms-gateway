@@ -3,47 +3,47 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8089/eureka
+      defaultZone: http://ms-discovery:8089/eureka
 spring:
   config:
-    import: optional:configserver:http://localhost:8090
+    import: optional:configserver:http://config-server:8090
   application:
     name: ms-gateway
   cloud:
     gateway:
       default-filters:
-      - name: MsGatewayGlobalFilter
+        - name: MsGatewayGlobalFilter
       routes:
         - id: ms-client
-          uri: http://localhost:8081/
+          uri: http://ms-client:8081/
           predicates:
             - Path=/bootcamp/client/**
           filters:
-          - name: MsGatewayPreFilter
-          - name: MsGatewayPostFilter
+            - name: MsGatewayPreFilter
+            - name: MsGatewayPostFilter
         - id: ms-account
-          uri: http://localhost:8082/
+          uri: http://ms-account:8082/
           predicates:
             - Path=/bootcamp/account/**,/bootcamp/accountTransaction/**
           filters:
-          - name: MsGatewayPreFilter
-          - name: MsGatewayPostFilter
+            - name: MsGatewayPreFilter
+            - name: MsGatewayPostFilter
         - id: ms-credit
-          uri: http://localhost:8083/
+          uri: http://ms-credit:8083/
           predicates:
             - Path=/bootcamp/loan/**,/bootcamp/loanPayment/**
           filters:
             - name: MsGatewayPreFilter
             - name: MsGatewayPostFilter
         - id: ms-card
-          uri: http://localhost:8084/
+          uri: http://ms-card:8084/
           predicates:
             - Path=/bootcamp/card/**,/bootcamp/cardTransaction/**
           filters:
             - name: MsGatewayPreFilter
             - name: MsGatewayPostFilter
         - id: ms-wallet
-          uri: http://localhost:8085/
+          uri: http://ms-wallet:8085/
           predicates:
             - Path=/bootcamp/wallet/**,/bootcamp/walletTransaction/**
           filters:
